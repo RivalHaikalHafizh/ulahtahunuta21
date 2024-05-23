@@ -9,7 +9,8 @@
 </head>
 <body>
     <audio id="birthday-song" src="happy-birthday-to-you-piano-version-13976.mp3"></audio>
-    <div id="login-container" class="container">
+    <div id="clock" class="clock"></div>
+    <div style="display: none;"  id="login-container" class="container">
         <h2>Masukkan Password</h2>
         <input type="password" id="password" placeholder="Makanan kesukaan ">
         <button onclick="checkPassword()">Submit</button>
@@ -35,5 +36,55 @@
 
     <div id="hearts-container"></div>
     <script src="script.js"></script>
+    <script>
+        // Function to check if it's past midnight
+        function isPastMidnight() {
+            var now = new Date();
+            var hours = now.getHours();
+            return hours >= 0 && hours < 6; // assuming past midnight is between 12 AM and 6 AM
+        }
+        
+        // Function to show login container if it's past midnight
+        function showLoginContainerIfPastMidnight() {
+            var loginContainer = document.getElementById('login-container');
+            var clock = document.getElementById('clock');
+            if (isPastMidnight()) {
+                loginContainer.style.display = 'block'; // Tampilkan login container
+                clock.style.display = 'none'; // Sembunyikan jam
+                document.getElementById('password').focus(); // Focus pada input password
+            }
+        }
+        
+        // Call showLoginContainerIfPastMidnight when the page loads
+        showLoginContainerIfPastMidnight();
+        
+        // Function to display current time
+        function displayCurrentTime() {
+            var clock = document.getElementById('clock');
+            var now = new Date();
+            var hours = now.getHours();
+            var minutes = now.getMinutes();
+            var seconds = now.getSeconds();
+        
+            // Format time (add leading zero if needed)
+            hours = hours < 10 ? '0' + hours : hours;
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+        
+            var currentTimeString = hours + ':' + minutes + ':' + seconds;
+            clock.textContent = 'Jam sekarang: ' + currentTimeString + ' akan dibuka setelah jam 12 malam';
+        
+            // Hide clock and show login container if past midnight
+            if (isPastMidnight()) {
+                clock.style.display = 'none'; // Sembunyikan jam
+                var loginContainer = document.getElementById('login-container');
+                loginContainer.style.display = 'block'; // Tampilkan login container
+            }
+        }
+        
+        // Update current time every second
+        setInterval(displayCurrentTime, 1000);            
+        </script>
+        
 </body>
 </html>

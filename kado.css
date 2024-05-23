@@ -1,0 +1,61 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #d4a373 0%, #ffe0b2 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.container {
+    text-align: center;
+    background: #fff5e6;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 90%;
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+.gift-box {
+    font-size: 100px;
+    color: #8b4513;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.gift-box:hover {
+    transform: scale(1.1);
+}
+
+#random-photo {
+    width: 100%;
+    max-width: 500px;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#whatsapp-link {
+    display: block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #25D366;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+#whatsapp-link:hover {
+    background-color: #128C7E;
+}
+
+.hidden {
+    display: none;
+}

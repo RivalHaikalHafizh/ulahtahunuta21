@@ -1,0 +1,187 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #d4a373 0%, #ffe0b2 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.container {
+    text-align: center;
+    background: #fff5e6;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 90%;
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+h1, h2 {
+    color: #8b4513;
+    margin-bottom: 20px;
+}
+
+p {
+    color: #663300;
+}
+
+button {
+    background: #8b4513;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 10px;
+}
+
+button:hover {
+    background: #5a2e00;
+}
+
+.hidden {
+    display: none;
+}
+
+#special-message {
+    margin-top: 20px;
+    color: #8b4513;
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+input[type="password"] {
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#login-container {
+    max-width: 400px;
+}
+
+#hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.heart {
+    font-size: 30px;
+    color: #8b4513;
+    position: absolute;
+    cursor: pointer;
+    pointer-events: auto;
+    animation: moveRandomly 5s linear infinite;
+    will-change: transform;
+}
+
+.envelope {
+    width: 300px;
+    height: 200px;
+    position: relative;
+    margin: 20px auto;
+    cursor: pointer;
+    background: #fff5e6; /* Ubah warna background menjadi putih */
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.5s;
+}
+
+.envelope-flap {
+    width: 100%;
+    height: 50%;
+    background: #8b4513; /* Ubah warna background menjadi coklat */
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: top center;
+    transition: transform 0.5s;
+}
+
+.envelope-body {
+    width: 100%;
+    height: 100%;
+    background: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    transform: translateY(50%);
+}
+
+.envelope-open .envelope-flap {
+    transform: rotateX(-180deg);
+}
+
+.envelope-open .envelope-body {
+    transform: translateY(0);
+}
+
+@keyframes moveRandomly {
+    0% {
+        transform: translate(0, 0);
+    }
+    25% {
+        transform: translate(calc(20vw * var(--directionX)), calc(-20vh * var(--directionY)));
+    }
+    50% {
+        transform: translate(calc(-20vw * var(--directionX)), calc(20vh * var(--directionY)));
+    }
+    75% {
+        transform: translate(calc(20vw * var(--directionX)), calc(20vh * var(--directionY)));
+    }
+    100% {
+        transform: translate(0, calc(-20vh * var(--directionY)));
+    }
+}
+
+#cake-arrow {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#love-arrow {
+    font-size: 40px;
+    color: red;
+    cursor: pointer;
+    animation: bounce 1s infinite alternate; /* Tambahkan efek animasi */
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-10px);
+    }
+}
+
+a {
+    color: #8b4513; /* Ganti warna sesuai keinginan Anda */
+    text-decoration: none; /* Menghilangkan garis bawah default pada tautan */
+}

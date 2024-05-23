@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kado Spesial</title>
+    <link rel="stylesheet" href="kado.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        #countdown {
+            font-size: 36px; /* Ubah ukuran font sesuai kebutuhan */
+        }
+    </style>
+</head>
+<body>
+    <audio id="birthday-song" src="funny-accompanying-background-music-for-video-vlogs-old-macdonald-188182.mp3" autoplay loop></audio>
+    <div id="gift-container" class="container">
+        <div id="gift-box" class="gift-box">
+            <i class="fas fa-gift"></i>
+        </div>
+        <img id="random-photo" class="hidden" alt="Kado Spesial" style="max-width: 100%; height: auto;">
+        <a id="whatsapp-link" class="hidden" target="_blank">kasih tau ayang</a>
+        <div id="countdown" class="hidden"></div>
+    </div>
+
+    <audio id="drum-sound">
+        <source src="20-seconds-game-countdown-142456.mp3" type="audio/mpeg">
+    </audio>
+    <div id="hearts-container"></div>
+    <script>
+        // List of photo URLs
+        const photoURLs = [
+            "be5e2db67eef78a65e79e20fd6805ed5.jpg",
+            "572d4f9f205dba242fe3ce33ecc77257.jpg",
+            // Add more photo URLs as needed
+        ];
+
+        // Get elements
+        const giftBox = document.getElementById("gift-box");
+        const randomPhoto = document.getElementById("random-photo");
+        const whatsappLink = document.getElementById("whatsapp-link");
+        const countdownElement = document.getElementById("countdown");
+        const drumSound = document.getElementById("drum-sound");
+        const birthdaySong = document.getElementById("birthday-song");
+
+        // Function to play drum sound
+        function playDrumSound() {
+            drumSound.play();
+        }
+
+        // Function to show random photo
+        function showRandomPhoto() {
+            // Get random photo URL
+            const randomIndex = Math.floor(Math.random() * photoURLs.length);
+            const randomURL = photoURLs[randomIndex];
+
+            // Show random photo
+            randomPhoto.src = randomURL;
+            randomPhoto.classList.remove("hidden");
+
+            // Set WhatsApp message
+            const whatsappMessage = encodeURIComponent("Lihat kado aku: " + window.location.origin + "/" + randomURL);
+
+            // Set WhatsApp number (replace 087865952180 with the desired number)
+            const whatsappNumber = "6287865952180"; // Include country code without "+" symbol
+
+            // Construct WhatsApp URL
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+
+            // Set WhatsApp link
+            whatsappLink.href = whatsappURL;
+            whatsappLink.classList.remove("hidden");
+
+            // Hide countdown
+            countdownElement.classList.add("hidden");
+
+            // Resume birthday song
+            birthdaySong.play();
+
+            // Prevent further clicking on gift box
+            giftBox.removeEventListener("click", giftBoxClickHandler);
+        }
+
+        // Function to handle gift box click
+        function giftBoxClickHandler() {
+            // Pause birthday song
+            birthdaySong.pause();
+            birthdaySong.currentTime = 0;
+
+            // Play drum sound
+            playDrumSound();
+
+            // Start countdown
+            let count = 25;
+            countdownElement.textContent = count;
+            countdownElement.classList.remove("hidden");
+
+            const countdownInterval = setInterval(() => {
+                count--;
+                countdownElement.textContent = count;
+                if (count === 0) {
+                    clearInterval(countdownInterval);
+                    showRandomPhoto();
+                }
+            }, 1000);
+        }
+
+        // Add click event to gift box
+        giftBox.addEventListener("click", giftBoxClickHandler);
+    </script>
+</body>
+</html>

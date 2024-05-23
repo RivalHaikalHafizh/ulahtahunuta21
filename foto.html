@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeri Foto</title>
+    <link rel="stylesheet" href="foto.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <audio id="birthday-song" src="happy-birthday-155461.mp3" autoplay></audio>
+    <div id="photo-container" class="container" style="text-align: center;">
+        <img id="changing-photo" src="WhatsApp Image 2024-05-23 at 14.01.50.jpeg" alt="Foto Ulang Tahun">
+        <p id="birthday-message">Ga kerasa yah Uta udah 21 tahun, makin cantik aja!</p>
+        <button id="gift-button" style="display: none;" onclick="location.href='kado.html'">Dapatkan kado!</button>
+    </div>
+    
+    
+    <div id="hearts-container"></div>
+    <script>
+        // List of photo URLs
+        const photoURLs = [
+            "WhatsApp Image 2024-05-23 at 14.01.50.jpeg",
+            "WhatsApp Image 2024-05-23 at 14.05.14.jpeg",
+            "WhatsApp Image 2024-05-23 at 14.05.45.jpeg",
+            "WhatsApp Image 2024-05-23 at 14.06.11.jpeg",
+            "WhatsApp Image 2024-05-23 at 15.37.04 (1).jpeg",
+            "WhatsApp Image 2024-05-23 at 15.37.04.jpeg",
+            "WhatsApp Image 2024-05-23 at 15.37.05 (1).jpeg",
+            "WhatsApp Image 2024-05-23 at 15.37.05.jpeg"
+            
+            
+        ];
+
+        // Function to change photo periodically
+        function changePhoto() {
+            const changingPhoto = document.getElementById("changing-photo");
+            const giftButton = document.getElementById("gift-button");
+            let currentIndex = 0;
+
+            const intervalId = setInterval(() => {
+                changingPhoto.src = photoURLs[currentIndex];
+                currentIndex++;
+
+                // If all photos have been shown, stop the interval and show the button
+                if (currentIndex >= photoURLs.length) {
+                    clearInterval(intervalId);
+                    document.getElementById("gift-button").style.display = "block";
+                }
+            }, 3000); // Change photo every 3 seconds
+        }
+
+        // Call the function to start changing photos
+        changePhoto();
+    </script>
+</body>
+</html>
